@@ -1,0 +1,14 @@
+interface:
+  display_name: "Diktuy"
+  short_description: "Meetings, transcripts and dictations from Diktuy"
+  icon_small: "./assets/diktuy-small.svg"
+  icon_large: "./assets/diktuy.png"
+  default_prompt: "Use Diktuy to find what was decided and who said what in my recent meetings."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "diktuy"
+      description: "Diktuy MCP server"
+      transport: "streamable_http"
+      url: "https://mcp.diktuy.ru/mcp"

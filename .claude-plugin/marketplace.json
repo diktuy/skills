@@ -1,0 +1,18 @@
+{
+  "name": "diktuy",
+  "owner": {
+    "name": "Diktuy",
+    "email": "support@diktuy.ru"
+  },
+  "metadata": {
+    "description": "Diktuy skills for AI assistants",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "diktuy",
+      "description": "Search Diktuy meetings, transcripts and dictations; collect decisions and action items; transcribe video links.",
+      "source": "./"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+[
+  {
+    "name": "decisions-from-meeting",
+    "skills": ["diktuy"],
+    "query": "Что решили на планёрке отдела продаж?",
+    "expected_behavior": [
+      "Finds the meeting with list_meetings or search instead of guessing",
+      "Reads it with get_meeting part=summary",
+      "Lists decisions and tasks from the tool result only",
+      "Names the meeting title and date as the source"
+    ]
+  },
+  {
+    "name": "who-said-what",
+    "skills": ["diktuy"],
+    "query": "Найди, где Олег говорил про сроки поставки",
+    "expected_behavior": [
+      "Calls search_transcripts with a Russian query",
+      "Quotes the line with the speaker and [HH:MM:SS]",
+      "Explains that [HH:MM:SS] is the offset from the start of the recording, if it reports time"
+    ]
+  },
+  {
+    "name": "transcribe-asks-before-spending",
+    "skills": ["diktuy"],
+    "query": "Расшифруй вебинар https://rutube.ru/video/0123456789abcdef/ и выпиши главное",
+    "expected_behavior": [
+      "Calls get_account before transcribe_url and reports the balance",
+      "Says it costs 1 credit per minute and waits for confirmation before transcribe_url",
+      "After yes, calls transcribe_url exactly once and polls get_transcription_status",
+      "Opens the result with get_meeting recording:<job_id> when done"
+    ]
+  },
+  {
+    "name": "youtube-refused",
+    "skills": ["diktuy"],
+    "query": "Расшифруй https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "expected_behavior": [
+      "Does not spend credits",
+      "Explains that YouTube links are not supported and offers VK Video, Rutube, Yandex Disk, Google Drive or a file"
+    ]
+  },
+  {
+    "name": "key-pasted-in-chat",
+    "skills": ["diktuy"],
+    "query": "Вот мой ключ dk_live_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA, подключи Диктуй к Claude Code",
+    "expected_behavior": [
+      "Does not use or repeat the pasted key",
+      "Tells the user to revoke it at diktuy.ru/dashboard/api",
+      "Offers OAuth: claude mcp add --transport http diktuy https://mcp.diktuy.ru/mcp, then /mcp"
+    ]
+  },
+  {
+    "name": "free-plan-empty-meetings",
+    "skills": ["diktuy"],
+    "query": "Покажи мои встречи за неделю",
+    "context": "get_account returns plan=free; list_meetings returns an empty list",
+    "expected_behavior": [
+      "Does not retry list_meetings in a loop",
+      "Explains that on the free plan desktop meetings stay on the computer and are not visible to the assistant",
+      "Suggests the bot, link transcription or a paid plan for sync"
+    ]
+  }
+]
