@@ -63,6 +63,7 @@ Cursor offers to sign in. With a key, add `"headers": { "Authorization": "Bearer
 
 ## VS Code (Copilot)
 
+The Claude Code extension for VS Code uses the Claude Code setup above. For Copilot, with an API key (paid plan),
 `.vscode/mcp.json`:
 
 ```json
