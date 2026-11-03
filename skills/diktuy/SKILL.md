@@ -17,8 +17,8 @@ transcriptions. You summarise and answer; the server does not run an LLM.
 2. **No MCP yet, interactive app**: offer to connect. Read `references/connect.md` for the user's app. For Claude Code:
    `claude mcp add --transport http diktuy https://mcp.diktuy.ru/mcp`, then `/mcp` to sign in with the Diktuy account.
    After adding, the app may need a restart; finish your answer and say so.
-3. **Script, CI or no browser**: use the REST API with the key in `DIKTUY_API_KEY` (`references/rest-api.md`). The REST
-   API needs a paid plan; the MCP server works on every plan.
+3. **Script, CI or no browser**: use the REST API with the key in `DIKTUY_API_KEY` (`references/rest-api.md`). API keys
+   and the REST API need a paid plan; the MCP server with account sign-in works on every plan.
 
 ## 2. Keys
 
@@ -79,7 +79,7 @@ Full parameters and return shapes: `references/mcp-tools.md`.
 - Dates in: `YYYY-MM-DD`, Moscow time, `date_to` inclusive. Dates out: ISO with `+03:00`. REST `started_at` is UTC.
 - `[HH:MM:SS]` in transcripts is the offset from the start of the recording, not the time of day.
 - Speakers: app meetings say «Собеседник N», bot recordings «Участник N»; in `set_speaker_names` «Участник N» is key
-  `N-1`. Speaker names in desktop-app meetings can only be changed in the app.
+  `N-1`. Speaker names in desktop-app meetings can only be changed in the app. One-speaker recordings have no labels.
 - `search` uses web-search syntax (`"exact phrase"`, `-word`) in Russian morphology; with no hits it retries with any
   word. No pagination: narrow by dates instead of repeating the call.
 - Long transcripts: `get_meeting(part="transcript", max_chars≤150000)` and keep calling with `offset=next_offset`

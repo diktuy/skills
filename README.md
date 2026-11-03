@@ -63,7 +63,7 @@ codex mcp login diktuy
 ## Вход и ключи
 
 - По умолчанию — вход через аккаунт Диктуй, без ключей. Отключить: [кабинет → API](https://diktuy.ru/dashboard/api).
-- Для скриптов и CI — ключ API из кабинета в переменной `DIKTUY_API_KEY`. REST API:
+- Для скриптов и CI — ключ API из кабинета в переменной `DIKTUY_API_KEY`, на платных тарифах. REST API:
   `https://api.diktuy.ru/v1`, [OpenAPI](https://api.diktuy.ru/v1/docs/openapi.json).
 
 ## Цены и лимиты
@@ -104,7 +104,7 @@ npx skills add diktuy/skills
 - Cursor, VS Code and others: see [connect.md](skills/diktuy/references/connect.md).
 - Claude.ai: Customize → Connectors → Add custom connector with `https://mcp.diktuy.ru/mcp`.
 
-Sign-in is OAuth with a Diktuy account (no keys). For headless use, put an API key in `DIKTUY_API_KEY`; REST API at
+Sign-in is OAuth with a Diktuy account (no keys). For headless use on paid plans, put an API key in `DIKTUY_API_KEY`; REST API at
 `https://api.diktuy.ru/v1` ([OpenAPI](https://api.diktuy.ru/v1/docs/openapi.json)). Reading is free; transcription
 costs 1 credit per minute of audio. Free plan: 50 assistant calls per day.
 

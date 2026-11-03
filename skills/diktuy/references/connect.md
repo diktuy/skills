@@ -5,7 +5,8 @@ Server: `https://mcp.diktuy.ru/mcp` (Streamable HTTP). Two ways to sign in:
 - **Diktuy account (OAuth)** — default. The app opens a Diktuy window «Разрешить», the user signs in at diktuy.ru.
   Works on every Diktuy plan. Disconnect any time at https://diktuy.ru/dashboard/api («Отключить»).
 - **API key** — `Authorization: Bearer dk_live_…`, key from https://diktuy.ru/dashboard/api. For headless setups.
-  Keep it in the `DIKTUY_API_KEY` environment variable.
+  Keys can be created on paid plans only; on the free plan sign in with the account. Keep the key in the
+  `DIKTUY_API_KEY` environment variable.
 
 Don't configure both for one server: in Claude Code an `Authorization` header turns OAuth off.
 

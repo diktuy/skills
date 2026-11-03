@@ -27,7 +27,7 @@ https://api.diktuy.ru/v1/docs/openapi.json (fetch it for exact schemas; the docs
 | `GET /transcriptions/{id}` | job and result; `?format=json\|text\|markdown\|srt\|vtt`. `409 not_ready`, `410 expired` (30 days) |
 | `GET /transcriptions` | list: `limit` 1–100, `cursor`, `status` (comma-separated) → `{data, has_more, next_cursor}` |
 | `PATCH /transcriptions/{id}/speakers` | `{"speakers": [{"id": 1, "name": "Анна"}]}` |
-| `DELETE /transcriptions/{id}` | cancel (credits refunded) and delete the result; 204 |
+| `DELETE /transcriptions/{id}` | cancel a running job (credits refunded) or delete a finished result (credits stay spent); 204 |
 | `POST /audio/transcriptions` | OpenAI-compatible multipart upload: `file`, `model?`, `language?`, `prompt?`, `response_format: json\|text\|srt\|vtt\|verbose_json`. Up to 25 MB and 30 min, 3 in parallel. Returns `credits_charged`, `credits_remaining` |
 | `GET /meetings` | meetings synced from the desktop app (paid plans): `limit`, `cursor`; `started_at` is **UTC** |
 | `GET /meetings/{id}` | one meeting: `segments`, `summary_texts`, `questions`; `?format=json\|text\|markdown` |

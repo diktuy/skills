@@ -25,7 +25,8 @@ Returns `{results: [{id, title, url, date, snippet, time?, shared?}]}`. Same sha
 - `overview` — title, date, duration, participants, which summaries exist, `expires_at` for link recordings.
 - `summary` — the summaries «Кратко», «Протокол», «Задачи» and the user's own questions with answers.
 - `transcript` — replies `[HH:MM:SS] Speaker: text` from `offset`; returns `next_offset` (`null` at the end) and
-  `total_segments`. `max_chars` 1 000–150 000.
+  `total_segments`. `max_chars` 1 000–150 000. Recordings with one speaker have no speaker label, the lines are
+  sentences with approximate time.
 - `all` — everything, may come back with `truncated: true`.
 
 **`search_transcripts(query, meeting_id?, date_from?, date_to?, limit=20)`** `ro` — the exact place in a conversation.
