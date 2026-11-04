@@ -29,8 +29,8 @@ transcriptions. You summarise and answer; the server does not run an LLM.
 ## 3. Money and limits
 
 - `transcribe_url` (and `POST /v1/transcriptions`) spends **1 credit per minute of recording**, rounded, at least 1.
-  Before starting: call `get_account`, tell the user the balance (`minutes_left` is credits) and the expected cost if the
-  length is known, and wait for a clear yes. Prices in rubles: https://diktuy.ru/pricing — don't quote them from memory.
+  Before starting: call `get_account`, tell the user the balance and the expected cost if the length is known, and wait
+  for a clear yes. `minutes_left` is credits: say «кредиты», never «минуты», for the balance and the cost. Prices in rubles: https://diktuy.ru/pricing — don't quote them from memory.
 - Never call `transcribe_url` twice for the same link. Poll `get_transcription_status` about every 30 seconds.
 - At most 5 transcriptions can be open at once; a sixth is refused.
 - Free plan: 50 MCP calls per 24 hours, and meetings, dictations and files from the desktop app are **not** on the
