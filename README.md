@@ -55,7 +55,7 @@ codex mcp login diktuy
 { "mcpServers": { "diktuy": { "url": "https://mcp.diktuy.ru/mcp" } } }
 ```
 
-**Claude (claude.ai)** — Customize → Connectors → Add → Add custom connector, адрес `https://mcp.diktuy.ru/mcp`.
+**Claude (claude.ai)** — [Диктуй в каталоге Claude](https://claude.ai/directory/connectors/diktuy).
 Скилл: Customize → Skills → Add → Upload skill, ZIP папки `skills/diktuy`.
 
 **ChatGPT** — Плагины → Добавить → Добавить пользовательский сервер MCP. Нужен тариф Pro, Business или Enterprise.
@@ -102,7 +102,7 @@ npx skills add diktuy/skills
 - Claude Code: `/plugin marketplace add diktuy/skills`, then `/plugin install diktuy@diktuy`, then `/mcp` to sign in.
 - Codex: `codex mcp add diktuy --url https://mcp.diktuy.ru/mcp` and `codex mcp login diktuy`.
 - Cursor, VS Code and others: see [connect.md](skills/diktuy/references/connect.md).
-- Claude.ai: Customize → Connectors → Add custom connector with `https://mcp.diktuy.ru/mcp`.
+- Claude.ai: [Diktuy in the Claude directory](https://claude.ai/directory/connectors/diktuy).
 
 Sign-in is OAuth with a Diktuy account (no keys). For headless use on paid plans, put an API key in `DIKTUY_API_KEY`; REST API at
 `https://api.diktuy.ru/v1` ([OpenAPI](https://api.diktuy.ru/v1/docs/openapi.json)). Reading is free; transcription

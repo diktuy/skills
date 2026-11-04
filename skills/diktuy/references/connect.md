@@ -12,8 +12,11 @@ Don't configure both for one server: in Claude Code an `Authorization` header tu
 
 ## Claude (claude.ai, desktop, mobile)
 
-Customize → Connectors → Add → Add custom connector → name `Diktuy`, URL `https://mcp.diktuy.ru/mcp` → Connect.
-The free Claude plan allows one custom connector. Claude's interface is in English.
+Open the Diktuy listing in the Claude directory: https://claude.ai/directory/connectors/diktuy → connect, then sign in.
+The listing's button text follows the claude.ai language («Connect to Claude» in English).
+
+Personal address from the Telegram bot (no Diktuy account): Customize → Connectors → Add → Add custom connector and
+paste that address. The free Claude plan allows one custom connector.
 
 ## ChatGPT
 
