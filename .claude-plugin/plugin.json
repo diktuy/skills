@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "diktuy",
   "description": "Diktuy skill + Diktuy MCP server: search meetings, transcripts and dictations, collect decisions and action items, transcribe video links.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "Diktuy",
     "url": "https://diktuy.ru"

@@ -60,5 +60,29 @@
       "Explains that on the free plan desktop meetings stay on the computer and are not visible to the assistant",
       "Suggests the bot, link transcription or a paid plan for sync"
     ]
+  },
+  {
+    "name": "summary-before-transcript",
+    "skills": [
+      "diktuy"
+    ],
+    "query": "Что решили на вчерашнем созвоне с поставщиком? Встреча длилась два часа",
+    "expected_behavior": [
+      "Reads get_meeting part=summary before any transcript",
+      "Does not use part=all, fetch or a large max_chars",
+      "Reads transcript pages or searches only if the summary does not answer"
+    ]
+  },
+  {
+    "name": "several-meetings-without-summaries",
+    "skills": [
+      "diktuy"
+    ],
+    "query": "Собери задачи со всех встреч за две недели",
+    "context": "list_tasks returns four meetings with tasks=null; get_meeting overview shows no summaries",
+    "expected_behavior": [
+      "Does not read the four transcripts right away",
+      "Lists the meetings with their length and waits for a yes"
+    ]
   }
 ]
