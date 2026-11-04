@@ -63,14 +63,29 @@ codex mcp login diktuy
 ## Вход и ключи
 
 - По умолчанию — вход через аккаунт Диктуй, без ключей. Отключить: [кабинет → API](https://diktuy.ru/dashboard/api).
-- Для скриптов и CI — ключ API из кабинета в переменной `DIKTUY_API_KEY`, на платных тарифах. REST API:
-  `https://api.diktuy.ru/v1`, [OpenAPI](https://api.diktuy.ru/v1/docs/openapi.json).
+- **Без MCP** — по ключу API (платные тарифы): в скилле есть скрипт `scripts/diktuy.py` на Python без зависимостей.
+  Встречи, поиск, задачи за неделю, расшифровка файла, папки или ссылки, уведомления. Ключ сохраняется командой
+  `python scripts/diktuy.py login` в вашем терминале, для серверов и CI — переменная `DIKTUY_API_KEY`. Подходит, если
+  программа не умеет MCP, агент работает в песочнице или не хочется держать сервер в каждом разговоре.
+  Команды — [cli.md](skills/diktuy/references/cli.md).
+- REST API: `https://api.diktuy.ru/v1`, [OpenAPI](https://api.diktuy.ru/v1/docs/openapi.json); n8n, Make,
+  Битрикс24 — [automation.md](skills/diktuy/references/automation.md).
+
+## Настройка под себя
+
+Скажите ассистенту «Настрой Диктуй». Он спросит, для чего вам Диктуй, сколько кредитов можно тратить без вопроса,
+куда сохранять расшифровки, какие имена и термины звучат в записях, и запишет ответы в
+`~/.diktuy-skill/preferences.md`. Файл лежит вне папки скилла, обновления его не трогают.
 
 ## Цены и лимиты
 
 MCP есть на всех тарифах Диктуй. Чтение бесплатно, расшифровка по ссылке — 1 кредит за минуту записи. На бесплатном
 тарифе 50 запросов ассистента в сутки, встречи из приложения видны на платных тарифах. Подробнее —
 [diktuy.ru/pricing](https://diktuy.ru/pricing) и [billing.md](skills/diktuy/references/billing.md).
+
+Второй счёт — токены вашей нейросети. Час встречи — 15–30 тыс. токенов, и они уходят модели заново с каждым
+следующим шагом ассистента. Поэтому скилл сначала берёт выжимку, потом поиск, а полный текст читает частями или
+сохраняет в файл. Замеры — в [billing.md](skills/diktuy/references/billing.md).
 
 ## Состав
 
@@ -79,8 +94,11 @@ MCP есть на всех тарифах Диктуй. Чтение беспл�
 | [skills/diktuy/SKILL.md](skills/diktuy/SKILL.md) | сам скилл: порядок подключения, деньги, инструменты, сценарии |
 | [references/connect.md](skills/diktuy/references/connect.md) | подключение в каждой программе |
 | [references/mcp-tools.md](skills/diktuy/references/mcp-tools.md) | 13 инструментов сервера |
-| [references/rest-api.md](skills/diktuy/references/rest-api.md) | REST API без MCP |
-| [references/billing.md](skills/diktuy/references/billing.md) | тарифы, кредиты, лимиты |
+| [references/cli.md](skills/diktuy/references/cli.md) | без MCP: скрипт `scripts/diktuy.py` по ключу API |
+| [references/rest-api.md](skills/diktuy/references/rest-api.md) | REST API для своего кода |
+| [references/automation.md](skills/diktuy/references/automation.md) | уведомления, n8n, Make, Битрикс24 |
+| [references/billing.md](skills/diktuy/references/billing.md) | тарифы, кредиты, лимиты, токены |
+| [references/setup.md](skills/diktuy/references/setup.md) | «Настрой Диктуй»: настройки под себя |
 | [evals/evals.json](evals/evals.json) | проверочные сценарии |
 | `.claude-plugin/`, `.mcp.json`, `agents/openai.yaml` | плагин Claude Code и манифест Codex |
 
@@ -107,5 +125,10 @@ npx skills add diktuy/skills
 Sign-in is OAuth with a Diktuy account (no keys). For headless use on paid plans, put an API key in `DIKTUY_API_KEY`; REST API at
 `https://api.diktuy.ru/v1` ([OpenAPI](https://api.diktuy.ru/v1/docs/openapi.json)). Reading is free; transcription
 costs 1 credit per minute of audio. Free plan: 50 assistant calls per day.
+
+Without MCP, the bundled `scripts/diktuy.py` (Python 3.8+, no dependencies) does the same with an API key —
+[cli.md](skills/diktuy/references/cli.md). An hour of meeting is 15–30k tokens of your model's context, so the skill
+reads summaries first and pages through transcripts. Say «Настрой Диктуй» ("set up Diktuy") to save personal
+preferences in `~/.diktuy-skill/preferences.md`.
 
 License: MIT.

@@ -60,5 +60,47 @@
       "Explains that on the free plan desktop meetings stay on the computer and are not visible to the assistant",
       "Suggests the bot, link transcription or a paid plan for sync"
     ]
+  },
+  {
+    "name": "no-mcp-uses-script",
+    "skills": ["diktuy"],
+    "query": "Собери задачи со всех встреч за неделю",
+    "context": "No diktuy MCP server is connected; DIKTUY_API_KEY is set (plan Профи)",
+    "expected_behavior": [
+      "Does not insist on adding the MCP server first",
+      "Runs scripts/diktuy.py tasks --since 7d instead of hand-written HTTP calls",
+      "Groups tasks by person and names the meeting each came from"
+    ]
+  },
+  {
+    "name": "summary-before-transcript",
+    "skills": ["diktuy"],
+    "query": "Что решили на вчерашнем созвоне с поставщиком? Встреча длилась два часа",
+    "expected_behavior": [
+      "Reads the summary (get_meeting part=summary or meeting --summary) before any transcript",
+      "Does not load the whole transcript with a large max_chars or --full",
+      "Reads transcript pages or searches only if the summary does not answer"
+    ]
+  },
+  {
+    "name": "batch-asks-before-spending",
+    "skills": ["diktuy"],
+    "query": "Расшифруй все голосовые из папки voices",
+    "context": "No MCP; API key set; the folder has 20 voice messages of about 1.5 minutes each",
+    "expected_behavior": [
+      "Checks the balance with diktuy.py me before transcribing",
+      "Says the cost (each file rounds up separately, about 40 credits) and waits for a yes",
+      "After yes, runs one transcribe call on the folder with --out-dir, not one call per format"
+    ]
+  },
+  {
+    "name": "personal-setup",
+    "skills": ["diktuy"],
+    "query": "Настрой Диктуй",
+    "expected_behavior": [
+      "Checks access first (get_account or diktuy.py me)",
+      "Asks the setup questions in one numbered message",
+      "Writes the answers to ~/.diktuy-skill/preferences.md, not into the skill folder"
+    ]
   }
 ]

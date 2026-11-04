@@ -1,5 +1,18 @@
 # Connecting Diktuy
 
+## No Diktuy account yet
+
+1. Sign up at https://diktuy.ru/auth/register — Yandex ID, Telegram or email. The free plan needs no card and has no
+   end date; the MCP server works on it with account sign-in.
+2. Meetings come from the desktop app for Windows and macOS: https://diktuy.ru/download. It records Zoom, Telemost,
+   Google Meet or a microphone and transcribes by speaker. On paid plans a meeting reaches the server a minute
+   after transcription; on the free plan it stays on the computer.
+3. Only links to transcribe — the app is not needed.
+
+Plans and credits — [billing.md](billing.md). Then connect the user's app below.
+
+## Server and sign-in
+
 Server: `https://mcp.diktuy.ru/mcp` (Streamable HTTP). Two ways to sign in:
 
 - **Diktuy account (OAuth)** — default. The app opens a Diktuy window «Разрешить», the user signs in at diktuy.ru.
@@ -88,6 +101,9 @@ The Claude Code extension for VS Code uses the Claude Code setup above. For Copi
 
 Any client with remote Streamable HTTP and OAuth 2.1 (dynamic client registration or client ID metadata documents)
 works with the URL alone. Otherwise pass the API key as a Bearer header.
+
+No MCP in the client, or the user would rather not add a server (lighter context, sandboxed agents, cron): with an
+API key the bundled script does the same reading and transcription — [cli.md](cli.md).
 
 ## No account, only the Telegram bot
 
