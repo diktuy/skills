@@ -62,7 +62,7 @@ codex mcp login diktuy
 
 ## Вход и ключи
 
-- По умолчанию — вход через аккаунт Диктуй, без ключей. Отключить: [кабинет → API](https://diktuy.ru/dashboard/api).
+- По умолчанию — вход через аккаунт Диктуй, без ключей. Отключить: [кабинет → API и MCP](https://diktuy.ru/dashboard/api).
 - Для скриптов и CI — ключ API из кабинета в переменной `DIKTUY_API_KEY`, на платных тарифах. REST API:
   `https://api.diktuy.ru/v1`, [OpenAPI](https://api.diktuy.ru/v1/docs/openapi.json).
 
